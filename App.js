@@ -1,17 +1,17 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "./screens/Home";
+import { UserProvider } from "./contexts/UserContext";
+import AppNavigator from "./navigation/AppNavigator";
 
-const Stack = createNativeStackNavigator();
-
-export default function App() {
+const App = () => {
+  // context api to serve data to app
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <UserProvider>
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
+    </UserProvider>
   );
-}
+};
+
+export default App;
