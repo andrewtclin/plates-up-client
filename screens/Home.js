@@ -22,13 +22,14 @@ export default function Home() {
   //#endregion
 
   return (
-    <SafeAreaView className="w-full h-full flex-col justify-center items-center gap-y-4">
+    <SafeAreaView className="w-full h-full flex-col justify-start items-center gap-y-4 mt-4">
       <PrimaryButton title={timeFrame} onPress={onTimeFramePress} />
-      <View className="flex-col justify-center items-center gap-y-2">
+      <View className="flex-col justify-center items-center gap-y-2 bg-white rounded-md p-6">
         <Text className="text-center">
           This week, you have completed 5 workouts.
         </Text>
         <Text className="text-center">Let's keep the momentum going!</Text>
+
         <ProgressCircle />
       </View>
     </SafeAreaView>
