@@ -1,46 +1,36 @@
-import React, { useLayoutEffect } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React, { useState } from "react";
+import { View, SafeAreaView, Text } from "react-native";
 import { useUser } from "../contexts/UserContext";
 
-import logo from "../assets/plates-up-logo.png";
+import PrimaryButton from "../components/common/PrimaryButton";
+import ProgressCircle from "../components/charts/ProgressCircle";
 
 export default function Home() {
   //#region ------ states ------
-  const navigation = useNavigation();
-  const { user, setUser } = useUser();
+  const { user } = useUser();
+  const [timeFrame, setTimeFrame] = useState("This Week");
   //#endregion
 
   //#region ------ functions ------
-  const handleLogin = () => {
-    setUser({ username: "TC" });
+  const onTimeFramePress = () => {
+    console.log({ timeFrame });
   };
   //#endregion
 
   //#region ------ lifecycle ------
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: !!user,
-    });
-  }, [user]);
+
   //#endregion
 
   return (
-    <View>
-      {user ? (
-        <Text>Welcome back, {user.username}!</Text>
-      ) : (
-        <View className="h-full w-full flex-col items-center justify-center">
-          <Image source={logo} className="object-contain h-32 w-32" />
-
-          <TouchableOpacity
-            onPress={handleLogin}
-            className="mt-4 p-2 px-4 border border-primaryBlue rounded-md"
-          >
-            <Text className="font-bold text-primaryBlue ">Log In</Text>
-          </TouchableOpacity>
-        </View>
-      )}
-    </View>
+    <SafeAreaView className="w-full h-full flex-col justify-center items-center gap-y-4">
+      <PrimaryButton title={timeFrame} onPress={onTimeFramePress} />
+      <View className="flex-col justify-center items-center gap-y-2">
+        <Text className="text-center">
+          This week, you have completed 5 workouts.
+        </Text>
+        <Text className="text-center">Let's keep the momentum going!</Text>
+        <ProgressCircle />
+      </View>
+    </SafeAreaView>
   );
 }

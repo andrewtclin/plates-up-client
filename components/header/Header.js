@@ -1,12 +1,18 @@
 import React from "react";
 import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+
+import { useUser } from "../../contexts/UserContext";
 
 import { CogIcon } from "react-native-heroicons/solid";
-import { USER_ID, THEME_HEX } from "../utils/data";
+import { PRIMARY_BLUE } from "../../utils/data";
 
 export default function Header() {
+  //#region ------ States ------
   const navigation = useNavigation();
+  const route = useRoute();
+  const { user } = useUser();
+  //#endregion
 
   const onSettingsClick = () => {
     navigation.navigate("Settings");
@@ -17,17 +23,25 @@ export default function Header() {
       {/* Header */}
       <View className="flex-row items-center space-x-2 pb-3 mx-4 ">
         <View className="flex justify-center items-center h-8 w-8 p-2 rounded-full bg-primaryBlue">
-          <Text className="font-bold text-white">{USER_ID.charAt(0)}</Text>
+          <Text className="font-bold text-white">
+            {user["username"].charAt(0)}
+          </Text>
         </View>
         <View className="flex-1">
           <Text className="text-xs font-bold text-primaryBlueLight">
             Welcome Back.
           </Text>
-          <Text className="text-xl font-bold text-primaryBlue">{USER_ID}</Text>
+          <Text className="text-xl font-bold text-primaryBlue">
+            {user["username"]}
+          </Text>
         </View>
-        <TouchableOpacity onPress={onSettingsClick}>
-          <CogIcon size={30} color={THEME_HEX} />
-        </TouchableOpacity>
+        {route?.name === "Settings" ? (
+          ""
+        ) : (
+          <TouchableOpacity onPress={onSettingsClick}>
+            <CogIcon size={30} color={PRIMARY_BLUE} />
+          </TouchableOpacity>
+        )}
       </View>
     </SafeAreaView>
   );
