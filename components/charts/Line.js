@@ -1,13 +1,10 @@
-import React from "react";
 import { Dimensions } from "react-native";
-import { ProgressChart } from "react-native-chart-kit";
+import React from "react";
+import { LineChart } from "react-native-chart-kit";
+import { PRIMARY_BLUE_RGBA } from "../../utils/data";
 
-const ProgressCircle = () => {
+export default function Line() {
   const screenWidth = Dimensions.get("window").width * 0.8;
-  const data = {
-    labels: ["Weekly", "Monthly"], // Single label
-    data: [0.75, 0.3], // Example: 75% of the weekly goal achieved
-  };
   const chartConfig = {
     backgroundGradientFrom: "#1E2923",
     backgroundGradientFromOpacity: 0,
@@ -18,17 +15,25 @@ const ProgressCircle = () => {
     barPercentage: 0.5,
     useShadowColorFromDataset: false, // Optional
   };
+  const data = {
+    labels: ["January", "February", "March", "April", "May", "June"],
+    datasets: [
+      {
+        data: [20, 45, 28, 80, 99, 43],
+        strokeWidth: 2,
+      },
+    ],
+    legend: ["Worked"],
+  };
+
   return (
-    <ProgressChart
+    <LineChart
       data={data}
       width={screenWidth}
-      height={220}
-      strokeWidth={10}
-      radius={32}
+      height={256}
+      verticalLabelRotation={30}
       chartConfig={chartConfig}
-      hideLegend={false}
+      bezier
     />
   );
-};
-
-export default ProgressCircle;
+}
