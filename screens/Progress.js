@@ -44,6 +44,7 @@ export default function Progress() {
             <ScrollView className="h-96">
               {exercises.map((exercise) => (
                 <TouchableOpacity
+                  key={exercise}
                   className="flex-col justify-center items-center"
                   onPress={() => {
                     setSelectedExercise(exercise);
