@@ -37,7 +37,7 @@ export default function Progress() {
   //#endregion
 
   return (
-    <SafeAreaView className="h-full w-full flex-col justify-center items-center gap-y-4">
+    <SafeAreaView className="h-full w-full flex-col justify-start items-center gap-y-4 mt-4">
       <Portal>
         <Dialog visible={modalVisible} onDismiss={hideModal}>
           <Dialog.ScrollArea>
@@ -67,7 +67,7 @@ export default function Progress() {
           <Text className="font-bold text-primaryBlue">{selectedExercise}</Text>
         </View>
       </Button>
-      <View>
+      <View className="bg-white rounded-md p-6">
         <Line />
       </View>
     </SafeAreaView>
