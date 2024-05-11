@@ -37,7 +37,10 @@ export default function Logs() {
       <View className="w-full border-b border-primaryBlueLight py-1" />
       <ScrollView className="w-full h-96">
         {plans?.map((plan) => (
-          <TouchableOpacity className="w-full flex-row justify-start items-center border border-white rounded-md bg-white p-4 mt-2">
+          <TouchableOpacity
+            key={plan}
+            className="w-full flex-row justify-start items-center border border-white rounded-md bg-white p-4 mt-2"
+          >
             <View className="border border-primaryBlue rounded-full p-2">
               <BookOpenIcon size={16} color={PRIMARY_BLUE} />
             </View>
