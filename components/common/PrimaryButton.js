@@ -5,7 +5,7 @@ const PrimaryButton = ({ title, onPress }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      className="mt-4 p-2 px-4 border border-primaryBlue rounded-md"
+      className="m-4 p-2 px-4 border border-primaryBlue rounded-md"
     >
       <Text className="font-bold text-primaryBlue ">{title}</Text>
     </TouchableOpacity>
