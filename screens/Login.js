@@ -14,6 +14,7 @@ import SecondaryButton from "../components/common/SecondaryButton";
 import logo from "../assets/plates-up-logo.png";
 import { loginApi, userApi } from "../apis/apis";
 import { useUser } from "../contexts/UserContext";
+import { set } from "date-fns";
 
 export default function Login() {
   //#region ------ states ------
@@ -56,12 +57,17 @@ export default function Login() {
       }
 
       const data = await response.json();
-      setIsLoginSuccess(data.result.success);
+      if (!data.result.success) {
+        Alert.alert("Login Failed", "Invalid username or password");
+      } else {
+        setIsLoginSuccess(data.result.success);
+      }
     } catch (error) {
       console.error("Login failed", error);
       Alert.alert("Login Failed", error.toString());
     }
   };
+  console.log("login success", isLoginSuccess);
 
   //#endregion
 

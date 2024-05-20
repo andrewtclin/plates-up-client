@@ -6,12 +6,13 @@ import Progress from "../screens/Progress";
 import History from "../screens/History";
 import Settings from "../screens/Settings";
 import Login from "../screens/Login";
+import Register from "../screens/Register";
+import RegisterSuccess from "../screens/RegisterSuccess";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import Welcome from "../components/welcome/Welcome";
 
 import { useUser } from "../contexts/UserContext";
-import Register from "../screens/Register";
 
 // creating bottom tab navigator
 const Tab = createBottomTabNavigator();
@@ -52,6 +53,10 @@ const AppNavigator = () => {
       />
       <Tab.Screen name="Welcome" component={user ? Home : Welcome} />
       <Tab.Screen name="Register" component={user ? Home : Register} />
+      <Tab.Screen
+        name="RegisterSuccess"
+        component={user ? Home : RegisterSuccess}
+      />
       <Tab.Screen name="Login" component={user ? Home : Login} />
 
       <Tab.Screen

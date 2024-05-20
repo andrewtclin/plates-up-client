@@ -21,12 +21,60 @@ export default function Register() {
   const [newEmail, setNewEmail] = useState("");
   const [newLastName, setNewLastName] = useState("");
   const [newFirstName, setNewFirstName] = useState("");
+
   //#endregion
 
   //#region ------ functions ------
   const onCancelPress = () => {
     navigation.navigate("Welcome");
   };
+
+  // register
+  const handleRegister = async () => {
+    if (
+      !newUsername ||
+      !newPassword ||
+      !newEmail ||
+      !newLastName ||
+      !newFirstName
+    ) {
+      Alert.alert("Error", "All fields are required.");
+      return;
+    }
+
+    try {
+      const response = await fetch(userApi, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: newUsername,
+          password: newPassword,
+          email: newEmail,
+          lastname: newLastName,
+          firstname: newFirstName,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP status ${response.status}`);
+      }
+
+      const data = await response.json();
+      if (data.code == 200) {
+        navigation.navigate("RegisterSuccess");
+      } else {
+        throw new Error(data.message);
+      }
+    } catch (error) {
+      console.error("Registration failed", error);
+      Alert.alert("Registration Failed", error.toString());
+    }
+  };
+  //#endregion
+
+  //#region ------ Lifecycle ------
 
   //#endregion
 
@@ -81,7 +129,7 @@ export default function Register() {
         />
       </View>
       <View className="flex-row justify-center items-center pb-4">
-        <PrimaryButton title="Register" />
+        <PrimaryButton title="Register" onPress={handleRegister} />
         <SecondaryButton title="Cancel" onPress={onCancelPress} />
       </View>
     </KeyboardAvoidingView>
