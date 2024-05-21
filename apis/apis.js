@@ -8,3 +8,4 @@ const baseApi = `http://${API_HOST}:${API_PORT}/apis/v1`;
 export const loginApi = baseApi + "/login";
 export const userApi = baseApi + "/user";
 export const exerciseApi = baseApi + "/exercise";
+export const progressApi = baseApi + "/progress";

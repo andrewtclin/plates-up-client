@@ -96,7 +96,7 @@ export default function Login() {
     };
     if (isLoginSuccess) {
       getUserInfo();
-      navigation.navigate("Home");
+      navigation.navigate("Logs");
     }
   }, [isLoginSuccess]);
   //#endregion

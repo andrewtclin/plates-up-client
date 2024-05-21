@@ -1,9 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../screens/Home";
 import Logs from "../screens/Logs";
 import Progress from "../screens/Progress";
-import History from "../screens/History";
 import Settings from "../screens/Settings";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
@@ -13,6 +11,7 @@ import Footer from "../components/footer/Footer";
 import Welcome from "../components/welcome/Welcome";
 
 import { useUser } from "../contexts/UserContext";
+import About from "../screens/About";
 
 // creating bottom tab navigator
 const Tab = createBottomTabNavigator();
@@ -32,11 +31,6 @@ const AppNavigator = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={user ? Home : Welcome}
-        options={{ header: user ? () => <Header /> : () => null }}
-      />
-      <Tab.Screen
         name="Logs"
         component={user ? Logs : Welcome}
         options={{ header: user ? () => <Header /> : () => null }}
@@ -47,17 +41,17 @@ const AppNavigator = () => {
         options={{ header: user ? () => <Header /> : () => null }}
       />
       <Tab.Screen
-        name="History"
-        component={user ? History : Welcome}
+        name="About"
+        component={user ? About : Welcome}
         options={{ header: user ? () => <Header /> : () => null }}
       />
-      <Tab.Screen name="Welcome" component={user ? Home : Welcome} />
-      <Tab.Screen name="Register" component={user ? Home : Register} />
+      <Tab.Screen name="Welcome" component={user ? Logs : Welcome} />
+      <Tab.Screen name="Register" component={user ? Logs : Register} />
       <Tab.Screen
         name="RegisterSuccess"
-        component={user ? Home : RegisterSuccess}
+        component={user ? Logs : RegisterSuccess}
       />
-      <Tab.Screen name="Login" component={user ? Home : Login} />
+      <Tab.Screen name="Login" component={user ? Logs : Login} />
 
       <Tab.Screen
         name="Settings"
