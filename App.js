@@ -7,6 +7,7 @@ import * as SplashScreen from "expo-splash-screen";
 import logo from "./assets/plates-up-logo.png";
 import { Asset } from "expo-asset";
 import { LogBox } from "react-native";
+import { FontProvider } from "./contexts/fontContext";
 
 SplashScreen.preventAutoHideAsync();
 LogBox.ignoreAllLogs();
@@ -42,11 +43,13 @@ const App = () => {
   // context api to serve data to app
   return (
     <PaperProvider>
-      <UserProvider>
-        <NavigationContainer onReady={onLayoutRootView}>
-          <AppNavigator />
-        </NavigationContainer>
-      </UserProvider>
+      <FontProvider>
+        <UserProvider>
+          <NavigationContainer onReady={onLayoutRootView}>
+            <AppNavigator />
+          </NavigationContainer>
+        </UserProvider>
+      </FontProvider>
     </PaperProvider>
   );
 };

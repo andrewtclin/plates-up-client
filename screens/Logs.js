@@ -12,11 +12,14 @@ import PrimaryButton from "../components/common/PrimaryButton";
 import SecondaryButton from "../components/common/SecondaryButton";
 import { exerciseApi } from "../apis/apis";
 import { useUser } from "../contexts/UserContext";
+import { useFont } from "../contexts/fontContext";
 
 export default function Logs() {
   //#region ------ states ------
   const navigation = useNavigation();
   const { user, setUser } = useUser();
+  const { font, setFont } = useFont();
+
   const [exercises, setExercises] = useState([]);
   const [newExercise, setNewExercise] = useState("");
 
@@ -184,14 +187,26 @@ export default function Logs() {
         <View className="border border-primaryBlue rounded-full p-2">
           <PencilIcon size={16} color={PRIMARY_BLUE} />
         </View>
-        <Text className="text-primaryBlue pl-4">Start New Log</Text>
+        <Text
+          className={`text-primaryBlue pl-4 ${
+            font === "standard" ? "text-base" : "text-lg"
+          }`}
+        >
+          Start New Log
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity className="w-full flex-row justify-start items-center border border-white rounded-md bg-white p-4 mt-10">
         <View className="border border-primaryBlue rounded-full p-2">
           <SquaresPlusIcon size={16} color={PRIMARY_BLUE} />
         </View>
         <TouchableOpacity onPress={() => setShowNewExerciseModal(true)}>
-          <Text className="text-primaryBlue pl-4">Add New Exercise</Text>
+          <Text
+            className={`text-primaryBlue pl-4 ${
+              font === "standard" ? "text-base" : "text-lg"
+            }`}
+          >
+            Add New Exercise
+          </Text>
         </TouchableOpacity>
       </TouchableOpacity>
       <View className="w-full border-b border-primaryBlueLight py-1" />
@@ -202,7 +217,11 @@ export default function Logs() {
               <View className="border border-primaryBlue rounded-full p-2">
                 <BookOpenIcon size={16} color={PRIMARY_BLUE} />
               </View>
-              <Text className="text-primaryBlue pl-4">
+              <Text
+                className={`text-primaryBlue pl-4 ${
+                  font === "standard" ? "text-base" : "text-lg"
+                }`}
+              >
                 {exercise?.exercise_name}
               </Text>
             </View>

@@ -1,8 +1,10 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { PRIMARY_BLUE_LIGHT, PRIMARY_BLUE } from "../../utils/data";
+import { useFont } from "../../contexts/fontContext";
 
 export default function FooterItem({ item, onPress, isActive }) {
+  const { font, setFont } = useFont();
   const FooterIconComponent = item["icon"];
   return (
     <TouchableOpacity
@@ -15,7 +17,7 @@ export default function FooterItem({ item, onPress, isActive }) {
           color={isActive ? PRIMARY_BLUE : PRIMARY_BLUE_LIGHT}
         />
         <Text
-          className={`text-xs ${
+          className={`${font === "standard" ? "text-xs" : "text-lg"} ${
             isActive ? "text-primaryBlue" : "text-primaryBlueLight"
           }`}
         >
