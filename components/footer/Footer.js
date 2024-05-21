@@ -5,9 +5,8 @@ import FooterItem from "./FooterItem";
 
 import {
   ArrowTrendingUpIcon,
-  CalendarDaysIcon,
-  HomeIcon,
   PencilSquareIcon,
+  QuestionMarkCircleIcon,
 } from "react-native-heroicons/outline";
 
 const Footer = ({ state }) => {
@@ -16,12 +15,7 @@ const Footer = ({ state }) => {
   //#region ------ states ------
   const menuItems = [
     {
-      title: "Home",
-      icon: HomeIcon,
-      route: "Home",
-    },
-    {
-      title: "Logs",
+      title: "Exercises",
       icon: PencilSquareIcon,
       route: "Logs",
     },
@@ -31,9 +25,9 @@ const Footer = ({ state }) => {
       route: "Progress",
     },
     {
-      title: "History",
-      icon: CalendarDaysIcon,
-      route: "History",
+      title: "About",
+      icon: QuestionMarkCircleIcon,
+      route: "About",
     },
   ];
   const navigation = useNavigation();
