@@ -12,10 +12,12 @@ import { Button, Dialog, Portal, TextInput } from "react-native-paper";
 import { exerciseApi, progressApi } from "../apis/apis";
 import { useUser } from "../contexts/UserContext";
 import PrimaryButton from "../components/common/PrimaryButton";
+import { useFont } from "../contexts/fontContext";
 
 export default function Progress() {
   //#region ------ states ------
   const { user } = useUser();
+  const { font } = useFont();
   const [exercises, setExercises] = useState([]);
   // exercise states
   const [selectedExercise, setSelectedExercise] = useState();
@@ -139,7 +141,11 @@ export default function Progress() {
                   }}
                 >
                   <View className="w-full rounded-md my-1">
-                    <Text className="text-center text-primaryBlue py-3 text-lg">
+                    <Text
+                      className={`text-center text-primaryBlue py-3 ${
+                        font === "standard" ? "text-lg" : "text-xl"
+                      }`}
+                    >
                       {exercise.exercise_name}
                     </Text>
                   </View>
@@ -151,7 +157,11 @@ export default function Progress() {
       </Portal>
       <Button onPress={showModal}>
         <View className="w-52 flex-col justify-center items-center gap-y-2 border border-primaryBlue pb-2 px-4 rounded-sm ">
-          <Text className="font-bold text-primaryBlue">
+          <Text
+            className={`font-bold text-primaryBlue ${
+              font === "standard" ? "text-base" : "text-lg"
+            }`}
+          >
             {selectedExercise?.exercise_name}
           </Text>
         </View>
@@ -163,7 +173,13 @@ export default function Progress() {
         />
       </View>
       <View className="flex flex-col justify-center items-center">
-        <Text className="text-lg text-primaryBlue pb-2">Weights</Text>
+        <Text
+          className={`text-lg text-primaryBlue pb-2 ${
+            font === "standard" ? "text-base" : "text-lg"
+          }`}
+        >
+          Weights
+        </Text>
         <TextInput
           className="bg-white w-52"
           label="Weights"
