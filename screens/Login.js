@@ -14,7 +14,6 @@ import SecondaryButton from "../components/common/SecondaryButton";
 import logo from "../assets/plates-up-logo.png";
 import { loginApi, userApi } from "../apis/apis";
 import { useUser } from "../contexts/UserContext";
-import { set } from "date-fns";
 
 export default function Login() {
   //#region ------ states ------
@@ -67,7 +66,6 @@ export default function Login() {
       Alert.alert("Login Failed", error.toString());
     }
   };
-  console.log("login success", isLoginSuccess);
 
   //#endregion
 

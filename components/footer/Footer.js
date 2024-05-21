@@ -43,7 +43,6 @@ const Footer = ({ state }) => {
   //#region  ------ functions ------
   const navigateScreen = (route) => {
     navigation.navigate(route);
-    console.log(route);
   };
   //#endregion
 
