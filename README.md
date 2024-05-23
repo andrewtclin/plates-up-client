@@ -4,7 +4,7 @@ This project is licensed under _MIT_, feel free to reuse it with **original owne
 
 The client-side of this project is built with _ReactNative_.
 
-For the server-side, please refer to my other repository _plates-up-server_.
+For the server-side, please refer to my other repository [_plates-up-server_](https://github.com/andrewtclin/plates-up-server).
 
 ---
 
