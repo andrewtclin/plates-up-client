@@ -4,9 +4,12 @@ import licenses from "../utils/openSourceLicenses.json";
 import { useFont } from "../contexts/fontContext";
 
 export default function About() {
+  //#region ------ states ------
   const { font } = useFont();
   const [licenseList, setLicenseList] = useState([]);
+  //#endregion
 
+  //#region ------ lifecycle ------
   useEffect(() => {
     const formattedLicenses = Object.entries(licenses).map(
       ([packageName, details]) => ({
@@ -16,6 +19,7 @@ export default function About() {
     );
     setLicenseList(formattedLicenses);
   }, []);
+  //#endregion
 
   return (
     <View className="flex flex-col justify-center items-center p-4 px-12 gap-y-4">

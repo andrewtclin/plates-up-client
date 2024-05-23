@@ -9,11 +9,16 @@ import { Asset } from "expo-asset";
 import { LogBox } from "react-native";
 import { FontProvider } from "./contexts/fontContext";
 
+// Splash screen configuration
 SplashScreen.preventAutoHideAsync();
 LogBox.ignoreAllLogs();
-const App = () => {
-  const [appIsReady, setAppIsReady] = useState(false);
 
+const App = () => {
+  //#region ------ states ------
+  const [appIsReady, setAppIsReady] = useState(false);
+  //#endregion
+
+  //#region ------ lifecycle ------
   useEffect(() => {
     async function prepare() {
       try {
@@ -39,6 +44,7 @@ const App = () => {
   if (!appIsReady) {
     return null;
   }
+  //#endregion
 
   // context api to serve data to app
   return (

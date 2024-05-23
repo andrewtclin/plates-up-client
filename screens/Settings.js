@@ -14,11 +14,14 @@ import { TextInput } from "react-native-paper";
 import { userApi } from "../apis/apis";
 
 export default function Settings() {
+  //#region ------ states ------
   const { font, setFont } = useFont();
   const { user, setUser } = useUser();
   const [newEmail, setNewEmail] = useState(user.email);
   const [newPassword, setNewPassword] = useState();
+  //#endregion
 
+  //#region ------ functions ------
   const updateProfile = async () => {
     try {
       const response = await fetch(userApi + "/testuser", {
@@ -55,6 +58,7 @@ export default function Settings() {
       Alert.alert("Update Failed", error.toString());
     }
   };
+  //#endregion
 
   return (
     <View className="flex flex-col justify-start items-center p-4 px-12">
