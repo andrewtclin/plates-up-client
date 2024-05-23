@@ -10,7 +10,7 @@ For the server-side, please refer to my other repository _plates-up-server_.
 
 ## Purpose of this Application
 
-Going to the gym has become a common practice for many people, and many of us have a goal when working out. Whether it's to losemweight, gain muscle, or just to stay healthy, we all have a goal in mind. But how do we know if we're making progress?
+Going to the gym has become a common practice for many people, and many of us have a goal when working out. Whether it's to lose weight, gain muscle, or just to stay healthy, we all have a goal in mind. But how do we know if we're making progress?
 
 - Keep in mind that there are many applications out there that provide fancy functionalities, and a lot of times, they are not free. But really, we want a simple application to be able to track our progress.
 - This is where Plates-Up comes in, to cut away all the fancy stuff, letting you to focus on your goal and progress.
