@@ -1,9 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Text } from "react-native";
-import { useFont } from "../../contexts/fontContext";
 
-const SecondaryButton = ({ title, onPress, isDisabled = false }) => {
-  const { font } = useFont();
+const SecondaryButton = ({ title, onPress, font, isDisabled = false }) => {
   return (
     <TouchableOpacity
       onPress={onPress}

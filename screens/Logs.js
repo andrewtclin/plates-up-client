@@ -19,6 +19,7 @@ export default function Logs() {
   const navigation = useNavigation();
   const { user, setUser } = useUser();
   const { font, setFont } = useFont();
+  console.log(font);
 
   const [exercises, setExercises] = useState([]);
   const [newExercise, setNewExercise] = useState("");
@@ -255,7 +256,11 @@ export default function Logs() {
               />
             </Dialog.Content>
           </Dialog.Content>
-          <SecondaryButton title="Confirm" onPress={handleNewExerciseAdd} />
+          <SecondaryButton
+            title="Confirm"
+            onPress={handleNewExerciseAdd}
+            font={font}
+          />
         </Dialog>
       </Portal>
     </View>

@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { UserProvider } from "./contexts/UserContext";
+import { FontProvider } from "./contexts/fontContext";
 import AppNavigator from "./navigation/AppNavigator";
 import { PaperProvider } from "react-native-paper";
 import * as SplashScreen from "expo-splash-screen";
 import logo from "./assets/plates-up-logo.png";
 import { Asset } from "expo-asset";
 import { LogBox } from "react-native";
-import { FontProvider } from "./contexts/fontContext";
 
 // Splash screen configuration
 SplashScreen.preventAutoHideAsync();

@@ -50,7 +50,6 @@ export default function Login() {
           password: password,
         }),
       });
-
       if (!response.ok) {
         throw new Error(`HTTP status ${response.status}`);
       }
